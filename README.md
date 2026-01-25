@@ -1,2 +1,3 @@
 # AI-stats-probability
-Final Team Project: 
+Final Team Project
+Collaborators: Cameron Aljilani, Vanessa Crosby-Fitzgerald, Viviana Garzon Silva
