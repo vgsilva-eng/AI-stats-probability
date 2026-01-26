@@ -100,8 +100,8 @@ ai-masters-stats-probability/
 ### 6. Conclusion and Recommendations.
 ### 7. Appendix
 ### 8. References 
-https://www.itl.nist.gov/div898/handbook/toolaids/pff/eda.pdf
-https://www.geeksforgeeks.org/data-analysis/what-is-data-cleaning/#software-tools
+- https://www.itl.nist.gov/div898/handbook/toolaids/pff/eda.pdf
+- https://www.geeksforgeeks.org/data-analysis/what-is-data-cleaning/#software-tools
 
 
 
