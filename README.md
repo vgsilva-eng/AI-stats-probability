@@ -1,5 +1,6 @@
 # AI-stats-probability
 AAI500: Statistics & Probability - Final Team Project 
+
 **Collaborators:** Cameron Aljilani, Vanessa Crosby-Fitzgerald, Viviana Garzon Silva
 
 # Project Overview
