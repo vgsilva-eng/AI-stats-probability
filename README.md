@@ -193,7 +193,7 @@ ucimlrepo contributors. (n.d.). *ucimlrepo Python package* [Software]. GitHub. h
 - **Jupyter Notebook** - Interactive development environment
 
 ---
-## Collabolators
+## Collaborators
 
 - **Cameron Aljilani**
 - **Vanessa Crosby-Fitzgerald**
