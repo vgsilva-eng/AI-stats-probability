@@ -1,7 +1,5 @@
-# AI-stats-probability
-AAI500: Statistics & Probability - Final Team Project 
+#        Statistics & Probability - Final Team Project 
 
-**Collaborators:** Cameron Aljilani, Vanessa Crosby-Fitzgerald, Viviana Garzon Silva
 
 # Project Overview
 
@@ -15,8 +13,9 @@ This project analyzes income and demographic data from the Adult Census dataset 
 3. [Technical Report Sections](#technical-report-sections)
 4. [Results](#results)
 5. [Technologies Used](#technologies-used)
-6. [Team member responsabilities](#contributing)
-7. 
+6. [Collaborators](#collaborators)
+7. [License](#license)
+   
 
 
 ## Dataset
@@ -59,13 +58,13 @@ ai-masters-stats-probability/
 │   │
 │   ├── reports/
 │   │   ├── technical_report.pdf        # Final report
-│   │   ├── figures/                    # Generated visualizations
 │   │   └── appendix/                   # Code outputs
-│   │
+│   │   
 │   ├── README.md
 │   └── requirements.txt
 │
 └── .gitignore
+
 ```
 
 ---
@@ -106,11 +105,11 @@ ai-masters-stats-probability/
 
 **Visualizations (histograms, box plots, etc):** Histograms displayed age distribution with median and mean reference lines showing slight right skew toward older ages. Box plots for age revealed interquartile range and absence of extreme outliers. Bar charts illustrated gender distribution using color-coded visualization with count labels and percentages. Horizontal bar charts showed top 10 education categories ranked by frequency to handle the 16-level categorical variable effectively.
 
-**Scatter plots and relationship patterns:** ****** research needed ****** (Note: The code focused on univariate distributions and bivariate categorical comparisons rather than traditional scatter plots due to the mixed categorical/numerical nature of the data.)
+**Scatter plots and relationship patterns:**  The focus was on univariate distributions and bivariate categorical comparisons rather than traditional scatter plots due to the mixed categorical/numerical nature of the data.
 
-**Statistical tests (t-tests, chi-square, etc.):** Independent t-test was performed comparing age between income groups (≤50K vs >50K), yielding t-statistic of -43.59 with p-value < 0.001, indicating statistically significant age difference. Higher income earners (>50K) tended to be older on average than lower income earners, suggesting age and career progression contribute to earning potential. ****** Additional chi-square tests for categorical independence research needed ******
+**Statistical tests (t-tests, chi-square, etc.):** Independent t-test was performed comparing age between income groups (≤50K vs >50K), yielding t-statistic of -43.59 with p-value < 0.001, indicating statistically significant age difference. Higher income earners (>50K) tended to be older on average than lower income earners, suggesting age and career progression contribute to earning potential. 
 
-**Correlation analysis:** ****** research needed ****** (Note: The code focused on demographic segmentation and classification rather than traditional correlation matrices. The relationship between predictors and income was assessed through model feature importance rather than correlation coefficients.)
+**Correlation analysis:** The focus was on demographic segmentation and classification rather than traditional correlation matrices. The relationship between predictors and income was assessed through model feature importance rather than correlation coefficients.
 
 **Patterns discovered:** Key patterns revealed that higher income (>50K) was associated with older age, advanced education levels (Bachelor's+), and disproportionately male gender. The median age difference between income groups was approximately 7-8 years, with higher earners clustering in the 40-50 age range. Education showed strong stratification with Bachelor's+ degrees heavily represented in the >50K income category, while HS-grad and below dominated the ≤50K category.
 
@@ -168,5 +167,43 @@ Raju, S. K. (n.d.). *Colab Python data cleaning project* [Code repository]. GitH
 
 ucimlrepo contributors. (n.d.). *ucimlrepo Python package* [Software]. GitHub. https://github.com/uci-ml-repo/ucimlrepo
 
+---
 
+## Results
+
+### Key Findings
+1. [Main finding from analysis]    ??
+2. [Important pattern discovered]    ??
+
+   ### Model performance Summary
+   Image of the output
+
+---
+
+## Technologies Used
+
+- **Python 3.x** - Programming language
+- **NumPy** - Numerical computing
+- **Pandas** - Data manipulation and analysis
+- **Matplotlib** - Static visualizations
+- **Seaborn** - Statistical data visualization
+- **SciPy** - Scientific computing and statistics
+- **Scikit-learn** - Machine learning algorithms
+- **Statsmodels** - Statistical modeling
+- **Jupyter Notebook** - Interactive development environment
+
+---
+## Collaborators
+
+- **Cameron Aljilani**
+- **Vanessa Crosby-Fitzgerald**
+- **Viviana Garzon Silva**
+
+## License
+
+This project is for academic purposes as part of the AAI-500: Statistics & Probability course.
+
+
+
+---
 
