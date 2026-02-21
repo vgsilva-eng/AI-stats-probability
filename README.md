@@ -1,7 +1,6 @@
 # Statistics & Probability - Final Team Project 
 
 
-
 # Project Overview
 
 This project analyzes income and demographic data from the Adult Census dataset to identify market opportunities for paper planner products (e.g., Moleskine, Franklin Day Planners) in the face of declining sales due to digital alternatives. The analysis examines the relationship between age, gender, education level, and income to inform targeted marketing strategies for traditional paper planning products in an increasingly digital marketplace.
