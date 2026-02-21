@@ -58,13 +58,13 @@ ai-masters-stats-probability/
 │   │
 │   ├── reports/
 │   │   ├── technical_report.pdf        # Final report
-│   │   ├── figures/                    # Generated visualizations
 │   │   └── appendix/                   # Code outputs
-│   │
+│   │   
 │   ├── README.md
 │   └── requirements.txt
 │
 └── .gitignore
+
 ```
 
 ---
