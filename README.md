@@ -1,7 +1,6 @@
-# AI-stats-probability
-AAI500: Statistics & Probability - Final Team Project 
+# Statistics & Probability - Final Team Project 
 
-**Collaborators:** Cameron Aljilani, Vanessa Crosby-Fitzgerald, Viviana Garzon Silva
+
 
 # Project Overview
 
@@ -15,7 +14,8 @@ This project analyzes income and demographic data from the Adult Census dataset 
 3. [Technical Report Sections](#technical-report-sections)
 4. [Results](#results)
 5. [Technologies Used](#technologies-used)
-6. [License](#license)
+6. [Collaborators](#collaborators)
+7. [License](#license)
    
 
 
@@ -194,6 +194,11 @@ ucimlrepo contributors. (n.d.). *ucimlrepo Python package* [Software]. GitHub. h
 - **Jupyter Notebook** - Interactive development environment
 
 ---
+## Collabolators
+
+- **Cameron Aljilani**
+- **Vanessa Crosby-Fitzgerald**
+- **Viviana Garzon Silva**
 
 ## License
 
@@ -201,12 +206,7 @@ This project is for academic purposes as part of the AAI-500: Statistics & Proba
 
 ---
 
-## Contact
 
-For questions or collaboration:
-- **Cameron Aljilani**
-- **Vanessa Crosby-Fitzgerald**
-- **Viviana Garzon Silva**
 
 ---
 
