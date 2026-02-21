@@ -1,4 +1,4 @@
-# Statistics & Probability - Final Team Project 
+#        Statistics & Probability - Final Team Project 
 
 
 # Project Overview
@@ -202,8 +202,6 @@ ucimlrepo contributors. (n.d.). *ucimlrepo Python package* [Software]. GitHub. h
 ## License
 
 This project is for academic purposes as part of the AAI-500: Statistics & Probability course.
-
----
 
 
 
