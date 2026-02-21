@@ -15,8 +15,8 @@ This project analyzes income and demographic data from the Adult Census dataset 
 3. [Technical Report Sections](#technical-report-sections)
 4. [Results](#results)
 5. [Technologies Used](#technologies-used)
-6. [Team member responsabilities](#contributing)
-7. 
+6. [License](#license)
+   
 
 
 ## Dataset
@@ -168,7 +168,30 @@ Raju, S. K. (n.d.). *Colab Python data cleaning project* [Code repository]. GitH
 
 ucimlrepo contributors. (n.d.). *ucimlrepo Python package* [Software]. GitHub. https://github.com/uci-ml-repo/ucimlrepo
 
+---
 
+## Results
+
+### Key Findings
+1. [Main finding from analysis]    ??
+2. [Important pattern discovered]    ??
+
+   ### Model performance Summary
+   Image of the output
+
+---
+
+## Technologies Used
+
+- **Python 3.x** - Programming language
+- **NumPy** - Numerical computing
+- **Pandas** - Data manipulation and analysis
+- **Matplotlib** - Static visualizations
+- **Seaborn** - Statistical data visualization
+- **SciPy** - Scientific computing and statistics
+- **Scikit-learn** - Machine learning algorithms
+- **Statsmodels** - Statistical modeling
+- **Jupyter Notebook** - Interactive development environment
 
 ---
 
