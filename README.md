@@ -170,3 +170,20 @@ ucimlrepo contributors. (n.d.). *ucimlrepo Python package* [Software]. GitHub. h
 
 
 
+---
+
+## License
+
+This project is for academic purposes as part of the AAI-500: Statistics & Probability course.
+
+---
+
+## Contact
+
+For questions or collaboration:
+- **Cameron Aljilani**
+- **Vanessa Crosby-Fitzgerald**
+- **Viviana Garzon Silva**
+
+---
+
