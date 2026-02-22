@@ -75,13 +75,13 @@ ai-masters-stats-probability/
 
 **Background and context:** The paper planner market has experienced significant decline due to the widespread adoption of digital planning tools including smartphones, tablets, and integrated email applications with calendar and task management features. Despite this technological shift, certain demographic segments may continue to value traditional paper planning products for reasons including privacy concerns, tactile preference, or digital fatigue. This analysis seeks to identify these market segments to inform strategic marketing decisions.
 
-**Research question/problem statement:** How can demographic factors (age, gender, education level, and income) predict consumer segments most likely to purchase paper planners in a digitally-dominated market? The analysis aims to uncover patterns that will guide targeted marketing campaigns and potentially identify overlooked consumer segments such as privacy-conscious professionals or digitally-fatigued younger consumers.
+**Research question/problem statement:** How can demographic factors (age, gender, education level, income, marital status, stocks, occupation) predict consumer segments most likely to purchase paper planners in a digitally-dominated market? The analysis aims to uncover patterns that will guide targeted marketing campaigns and potentially identify overlooked consumer segments such as privacy-conscious professionals or digitally-fatigued younger consumers.
 
-**Dataset description:** The Adult Census Income dataset from the UCI Machine Learning Repository contains 48,842 records with 15 demographic and employment variables collected from the 1994 U.S. Census. Key variables for this analysis include age (numerical), sex (Male/Female), education level (16 categories), and income (binary: ≤50K or >50K), which serve as proxies for purchasing power and lifestyle preferences relevant to paper planner adoption.
+**Dataset description:** The Adult Census Income dataset from the UCI Machine Learning Repository contains 48,842 records with 15 demographic and employment variables collected from the 1994 U.S. Census. Key variables for this analysis include age (numerical), sex (Male/Female), education level (16 categories), income (binary: ≤50K or >50K), marital status (married or not), occupation (14 categories), hours worked, and stock ownership which serve as proxies for purchasing power and lifestyle preferences relevant to paper planner adoption.
 
-**Project objectives:** The primary objective is to develop predictive models that identify demographic segments with the highest likelihood of paper planner adoption based on income, age, education, and gender. Secondary objectives include providing actionable marketing recommendations, validating hypotheses about target demographics, and exploring whether younger, technologically-savvy consumers concerned about privacy represent an untapped market segment.
+**Project objectives:** The primary objective is to develop predictive models that identify demographic segments with the highest likelihood of paper planner adoption based on age, sex, education level, income, marital status, occupation, hours worked, and stock ownership. Secondary objectives include providing actionable marketing recommendations, validating hypotheses about target demographics, and exploring whether younger, technologically-savvy consumers concerned about privacy represent an untapped market segment.
 
-**Hypothesis:** We hypothesize that higher income individuals (>50K) with advanced education levels will show stronger affinity for premium paper planners due to greater purchasing power and professional planning needs. Additionally, we hypothesize that older age groups less comfortable with digital technology will remain a reliable target market, while younger, privacy-conscious professionals may represent an emerging niche segment worth investigating. 
+**Hypothesis:** We hypothesize that lower income individuals (<50K) with less education will show stronger affinity for premium paper planners due to needing professional stationary for planning and note-taking. Additionally, we hypothesize that older age groups less comfortable with digital technology will remain a reliable target market, while younger, privacy-conscious professionals may represent an emerging niche segment worth investigating. 
 
 ### 2. Data Cleaning/Preparation
 
@@ -93,9 +93,9 @@ ai-masters-stats-probability/
 
 **Handle Missing Data:** Missing values represented by '?' markers in categorical columns (native-country, occupation, workclass) were first identified and converted to NaN for consistency. A deliberate decision was made to drop all rows containing any missing values rather than impute, resulting in the removal of approximately 7% of records. This approach was chosen to avoid introducing bias through imputation and to maintain data integrity for accurate income-level analysis, retaining 45,222 complete records for analysis.
 
-**Normalize Data:** Income categories were normalized by creating a binary 'income_binary' variable (0 for ≤50K, 1 for >50K) to facilitate machine learning classification tasks. Education levels were later binned into four meaningful categories (Less than HS, HS Graduate, Some College, Bachelor's+) to reduce dimensionality while preserving educational attainment hierarchy. Numerical features (age) were standardized using StandardScaler during the modeling pipeline to ensure equal weighting across features.
+**Normalize Data:** Income categories were normalized by creating a binary 'income_binary' variable (0 for ≤50K, 1 for >50K) to facilitate machine learning classification tasks. Education levels were later binned into four meaningful categories (Less than HS, HS Graduate, Some College, Bachelor's+) to reduce dimensionality while preserving educational attainment hierarchy. Numerical features (age) were standardized using StandardScaler during the modeling pipeline to ensure equal weighting across features. The seven marital status categories were reduced to married or not not married. The fourteen occupational categories were reduced to two categories, Professional + Skilled Trade Worker and Non-professional. Stock ownership identified by the capital gains/capital losses categories was simplified to investment activity (yes/no).
 
-**Identify and Manage Outliers:** Age distribution analysis using box plots and quartile statistics revealed ages ranging from 17 to 90 years with a median of 37 years. No extreme outliers were removed as all age values represent valid census data. Summary statistics (mean, median, standard deviation, quartiles) were calculated to understand data spread and identify potential outliers in the age variable, though no systematic outlier removal was performed to preserve the natural demographic distribution.
+**Identify and Manage Outliers:** Age distribution analysis using box plots and quartile statistics revealed ages ranging from 17 to 90 years with a median of 37 years. No extreme outliers were removed as all age values represent valid census data. Summary statistics (mean, median, standard deviation, quartiles) were calculated to understand data spread and identify potential outliers in the age variable, though no systematic outlier removal was performed to preserve the natural demographic distribution. For hours worked, the distribution ranged from 1 to 99. The category was truncated to a maximum weekly work schedule of 84 hours (12 hrs/day x 7 days).
 
 ### 3. Exploratory Data Analysis (EDA)
 
@@ -103,7 +103,7 @@ ai-masters-stats-probability/
 
 **Summary statistics (mean, median, std, quartiles, etc):** Age statistics revealed mean of 38.6 years, median of 37 years, standard deviation of 13.7 years, with 25th percentile at 28 years and 75th percentile at 48 years. The income binary variable showed mean of 0.24 (24% high-income earners) with standard deviation of 0.43. Gender distribution showed Male: 30,527 (67.5%) and Female: 14,695 (32.5%) after cleaning.
 
-**Visualizations (histograms, box plots, etc):** Histograms displayed age distribution with median and mean reference lines showing slight right skew toward older ages. Box plots for age revealed interquartile range and absence of extreme outliers. Bar charts illustrated gender distribution using color-coded visualization with count labels and percentages. Horizontal bar charts showed top 10 education categories ranked by frequency to handle the 16-level categorical variable effectively.
+**Visualizations (histograms, box plots, etc):** Histograms displayed age distribution with median and mean reference lines showing slight right skew toward older ages. Box plots for age revealed interquartile range and absence of extreme outliers. Bar charts illustrated gender distribution using color-coded visualization with count labels and percentages. Horizontal bar charts showed top 10 education categories ranked by frequency to handle the 16-level categorical variable effectively. A heat map showing the four binned education levels vs. age and probability of making >50K revealed all ages with a high school education or below were part of the target demographic. A Faceted Line Plot with Probability vs Age, separated by Marriage + Education provided insights into identifying target demographics.
 
 **Scatter plots and relationship patterns:**  The focus was on univariate distributions and bivariate categorical comparisons rather than traditional scatter plots due to the mixed categorical/numerical nature of the data.
 
@@ -111,19 +111,77 @@ ai-masters-stats-probability/
 
 **Correlation analysis:** The focus was on demographic segmentation and classification rather than traditional correlation matrices. The relationship between predictors and income was assessed through model feature importance rather than correlation coefficients.
 
-**Patterns discovered:** Key patterns revealed that higher income (>50K) was associated with older age, advanced education levels (Bachelor's+), and disproportionately male gender. The median age difference between income groups was approximately 7-8 years, with higher earners clustering in the 40-50 age range. Education showed strong stratification with Bachelor's+ degrees heavily represented in the >50K income category, while HS-grad and below dominated the ≤50K category.
+**Patterns discovered:** Key patterns revealed that higher income (>50K) was associated with older age, advanced education levels (Bachelor's+), being married, owning stocks, and disproportionately male gender. The median age difference between income groups was approximately 7-8 years, with higher earners clustering in the 40-50 age range. Education showed strong stratification with Bachelor's+ degrees heavily represented in the >50K income category, while HS-grad and below dominated the ≤50K category. Those married over 40 yrs old with at least a high school education were moer likely to make >50K while unmarried individuals regardless of education level were more likely to make <50K. Owning stocks evidences by either a capital gain or capital loss was a significant predictor of income >50K.
 
-**Detection of mistakes:** Data validation identified malformed income labels (<=50K. and >50K. with trailing periods) affecting 15,060 records, which were corrected during cleaning. Whitespace inconsistencies in categorical columns were detected and stripped. Missing value markers ('?') were found in multiple columns and systematically converted to NaN for proper handling. No duplicate rows were detected after the cleaning pipeline was applied, confirming data integrity.
+**Detection of mistakes:** Data validation identified malformed income labels (<=50K. and >50K. with trailing periods) affecting 15,060 records, which were corrected during cleaning. Whitespace inconsistencies in categorical columns were detected and stripped. Missing value markers ('?') were found in multiple columns and systematically converted to NaN for proper handling. No duplicate rows were detected after the cleaning pipeline was applied, confirming data integrity. Due to some native-countries having low reported instances, some countries were not present in either the training or test data which led to a model warning. The was fixed by reclassifying low-occurance countries (count < 50) to 'Other' which corrected the error.
 
 ### 4. Model Selection
 
-**Models considered:** Three classification models were evaluated: Logistic Regression (baseline linear classifier), Decision Tree (non-linear, interpretable rule-based classifier with max_depth=10 to prevent overfitting), and Random Forest (ensemble method with 100 estimators). All models were configured with class_weight='balanced' to address the income class imbalance (76% ≤50K vs 24% >50K). Features used included age (numerical), education_category (binned into 4 levels), and sex (binary), which were preprocessed using StandardScaler for numerical features and OneHotEncoder for categorical features.
+**Models considered:** Three classification models were evaluated: Logistic Regression (baseline linear classifier), Decision Tree (non-linear, interpretable rule-based classifier with max_depth=10 to prevent overfitting), and Random Forest (ensemble method with 100 estimators). All models were configured with class_weight='balanced' to address the income class imbalance (76% ≤50K vs 24% >50K). Features used included age (numerical), education_category (binned into 4 levels), and sex (binary), marital status (binary), stock ownership (binary), occupation (binned into binary categories), and hours worked per week (numerical limited to 84) which were preprocessed using StandardScaler for numerical features and OneHotEncoder for categorical features.
 
 **Evaluation criteria:** Models were evaluated using 5-fold cross-validation F1-score on training data to assess robustness and generalization. Test set performance was measured using Accuracy (overall correctness), Precision (positive predictive value), Recall (sensitivity/true positive rate), and F1-Score (harmonic mean of precision and recall). F1-score was prioritized as the primary metric due to class imbalance, as it balances precision and recall better than accuracy alone.
 
-**Model comparison results:** ****** Specific numerical results from model comparison table research needed ****** (Note: The code generates a results dataframe with CV F1 Mean (±Std), Test Accuracy, Test Precision, Test Recall, and Test F1 for each model, but the actual output values were not captured in the notebook review. The comparison table would show which model achieved highest F1-score and best balance of metrics.)
+**Model comparison results:**
 
-**Selected model and justification:** ****** Final model selection and justification research needed ****** (Note: The code compares all three models and generates feature importance/coefficients for interpretation. The selection would be based on highest F1-score while considering interpretability for business stakeholders. Logistic Regression offers clear coefficient interpretation, Decision Tree provides explicit rules, while Random Forest typically achieves highest accuracy but less interpretability.)
+All-Feature Model - **LOGISTIC REGRESSION**
+
+| Model               | CV F1 Mean (±Std) | Test Accuracy | Test Precision | Test Recall | Test F1 |
+|---------------------|-------------------|---------------|----------------|-------------|---------|
+| Logistic Regression |**0.683(±0.006)**    | 0.806         | 0.574          | **0.846**       | **0.684**   |
+| Decision Tree       | 0.670 (±0.003)    | 0.799         | 0.563          | 0.843       | 0.675   |
+| Random Forest       | 0.630 (±0.012)    | **0.833**         | **0.683**          | 0.612       | 0.646   |
+
+Four-Feature Model (Age, Sex, Education, Income) - **RANDOM FOREST**
+| Model               | CV F1 Mean (±Std) | Test Accuracy | Test Precision | Test Recall | Test F1 |
+|---------------------|-------------------|---------------|----------------|-------------|---------|
+| Logistic Regression | 0.560 (±0.007)    | 0.723         | 0.464          | 0.724       | 0.566   |
+| Decision Tree       | 0.577 (±0.006)    | 0.728         | 0.471          | **0.757**   | **0.581** |
+| Random Forest       | 0.576 (±0.005)    | **0.730**     | **0.473**      | 0.754       | **0.581** |
+
+Five-Feature Model (Age, Sex, Education, Income, Marital Status) - **DECISION TREE**
+| Model               | CV F1 Mean (±Std) | Test Accuracy | Test Precision | Test Recall | Test F1 |
+|---------------------|-------------------|---------------|----------------|-------------|---------|
+| Logistic Regression | 0.584 (±0.005)    | 0.736         | 0.481          | 0.751       | 0.586   |
+| Decision Tree       | 0.593 (±0.005)    | 0.736         | 0.482          | **0.811**   | **0.604** |
+| Random Forest       | 0.592 (±0.002)    | 0.736         | 0.482          | 0.806       | 0.603   |
+
+Six-Parameter Model (Age, Sex, Education, Income, Marital Status, Hours Per Week) - **TOSS-UP: DECISION TREE or RANDOM FOREST**
+| Model               | CV F1 Mean (±Std) | Test Accuracy | Test Precision | Test Recall | Test F1 |
+|---------------------|-------------------|---------------|----------------|-------------|---------|
+| Logistic Regression | 0.592 (±0.004)    | 0.743         | 0.489          | 0.774       | 0.599   |
+| Decision Tree       | 0.603 (±0.005)    | 0.739         | 0.486          | **0.805**   | **0.606** |
+| Random Forest       | 0.574 (±0.005)    | **0.752**     | **0.501**      | 0.682       | 0.577   |
+
+Seven-Parameter Model (Age, Sex, Education, Income, Marital Status, Occupation, Hours per Week) - **DECISION TREE**
+| Model               | CV F1 Mean (±Std) | Test Accuracy | Test Precision | Test Recall | Test F1 |
+|---------------------|-------------------|---------------|----------------|-------------|---------|
+| Logistic Regression | 0.600 (±0.003)    | 0.745         | 0.493          | 0.789       | 0.607   |
+| Decision Tree       | 0.601 (±0.004)    | 0.747         | 0.495          | **0.818**   | **0.616** |
+| Random Forest       | 0.576 (±0.005)    | **0.759**     | **0.512**      | 0.677       | 0.583   |
+
+Eight-Feature Model (Age, Sex, Education, Income, Marital Status, Occupation, Hours per Week, Capital Activity (gain or loss, none) - 
+
+**LOGISTIC REGRESSION**
+| Model               | CV F1 Mean (±Std) | Test Accuracy | Test Precision | Test Recall | Test F1 |
+|---------------------|-------------------|---------------|----------------|-------------|---------|
+| Logistic Regression | 0.621 (±0.005)    | 0.761         | 0.513          | 0.792       | 0.623   |
+| Decision Tree       | 0.619 (±0.006)    | 0.754         | 0.504          | **0.803**   | 0.619   |
+| Random Forest       | 0.584 (±0.007)    | **0.768**     | **0.528**      | 0.647       | 0.581   |
+
+**Selected model and justification:** Based on iteratively binning categories into binary data sets, the **Eight-Parameter Model using Logistic Regression** was chosen. The initial concern with analyzing the data and passing recommendations to the marketing department revolved around minimizing the available categories to those found within online ad purchasing demongraphics. For example, the data set provides 14 occupation categories ranging from truck driver (craft-repair) to executive managers. By shaping the categories into (professional + skilled tradesmen) or non-professional, the marketing department can better identify and focus on the target demographic.  Additionally, as the number of parameters increases, the best model shifts from Decision Tree to Logistic Regression. The Logistic Regression model is easy to understand because the relative weighting values and effects can be seen directly.
+
+  log(p / (1-p)) =   1.1448
+
+                 +   0.7163 * age
+                 +   0.4478 * hours-per-week
+                 +  -1.2104 * education_category_HS Graduate
+                 +  -2.3830 * education_category_Less than HS
+                 +  -0.7841 * education_category_Some College
+                 +   0.4869 * sex_Male
+                 +  -1.5311 * marriage_category_Not Married
+                 +   0.8638 * occupation_category_professional
+                 +  -1.4859 * capital_activity_No Investment Activity
+(p = probability of income > $50K)
 
 ### 5. Model Analysis
 
